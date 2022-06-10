@@ -16,25 +16,25 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-list"></i>
             <p>
-              Удобрения
+              Темы
               <i class="fas fa-angle-left right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('admin.theme.index') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Список</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('admin.theme.create') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Добавить</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="{{ route('admin.theme.deleted') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Удаленные</p>
               </a>
@@ -42,7 +42,7 @@
           </ul>
         </li>
 
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tag"></i>
             <p>
@@ -197,7 +197,7 @@
             <i class="far fa-envelope nav-icon"></i>
             <p>Заявки</p>
           </a>
-        </li>
+        </li> --}}
 
         <li class="nav-item">          
           <a class="nav-link" href="{{ route('logout') }}"

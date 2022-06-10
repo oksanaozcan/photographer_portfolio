@@ -48,7 +48,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Удобрения</a>
+        <a href="{{ route('main') }}" class="nav-link">Обо мне</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Контакты</a>
@@ -141,30 +141,30 @@
 <script src={{ asset("dist/js/pages/dashboard.js") }}></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
 <script>
-  // $(function () {
-  //   //Initialize Select2 Elements
-  //   $('.select2').select2()    
-  // })
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()    
+  })
 
-  // $(function () {
-  //   var url = window.location;
-  //   // for single sidebar menu
-  //   $('ul.nav-sidebar a').filter(function () {
-  //       return this.href == url;
-  //   }).addClass('active');
+  $(function () {
+    var url = window.location;
+    // for single sidebar menu
+    $('ul.nav-sidebar a').filter(function () {
+        return this.href == url;
+    }).addClass('active');
 
-  //   // for sidebar menu and treeview
-  //   $('ul.nav-treeview a').filter(function () {
-  //       return this.href == url;
-  //   }).parentsUntil(".nav-sidebar > .nav-treeview")
-  //       .css({'display': 'block'})
-  //       .addClass('menu-open').prev('a')
-  //       .addClass('active');
-  //   });    
+    // for sidebar menu and treeview
+    $('ul.nav-treeview a').filter(function () {
+        return this.href == url;
+    }).parentsUntil(".nav-sidebar > .nav-treeview")
+        .css({'display': 'block'})
+        .addClass('menu-open').prev('a')
+        .addClass('active');
+    });    
    
-  //   $(document).ready( function () {
-  //     $('.sortable').DataTable();
-  //   } );
+    $(document).ready( function () {
+      $('.sortable').DataTable();
+    } );
 </script>
 </body>
 </html>

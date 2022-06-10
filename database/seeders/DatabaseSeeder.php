@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Theme;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -19,5 +20,7 @@ class DatabaseSeeder extends Seeder
         'password' => bcrypt('123456789'),
         'remember_token' => Str::random(10),
       ]);
+
+      Theme::factory(10)->create();
     }
 }

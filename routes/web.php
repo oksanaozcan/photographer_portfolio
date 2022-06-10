@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\MainPageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,17 @@ Route::middleware(['auth'])->group(function () {
   Route::prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('admin');
 
+    Route::prefix('theme')->group(function () {
+      Route::get('/', [ThemeController::class, 'index'])->name('admin.theme.index');
+      Route::get('/create', [ThemeController::class, 'create'])->name('admin.theme.create');
+      Route::get('/deleted', [ThemeController::class, 'indexDeleted'])->name('admin.theme.deleted'); 
+      Route::post('/', [ThemeController::class, 'store'])->name('admin.theme.store');
+      Route::get('/{theme}', [ThemeController::class, 'show'])->name('admin.theme.show');
+      Route::get('/{theme}/edit', [ThemeController::class, 'edit'])->name('admin.theme.edit');
+      Route::patch('/{theme}', [ThemeController::class, 'update'])->name('admin.theme.update');
+      Route::delete('/{theme}', [ThemeController::class, 'delete'])->name('admin.theme.delete');             
+    });   
+    
   });
 });
 
