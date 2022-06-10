@@ -6,3 +6,75 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #272727;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+}
+
+.logo {
+  width: 160px;
+  height: 60px;
+  color: $cyan;
+  border: 2px solid $cyan;
+  text-align: center;
+  line-height: 60px;
+  font-size: 25px;
+  position: relative;
+  transition: all 0.2s;
+  &:hover {
+    color: white!important;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $cyan;
+    z-index: -1;
+    opacity: 0;
+    transition: all 0.8s;
+  }
+  &::after {
+    content: "studio";
+    position: absolute;
+    font-size: 15px;
+    letter-spacing: 1px;
+    bottom: -80%;
+    right: 0;
+    background-color: transparent;
+    z-index: -1;
+    opacity: 1;
+    transition: all 0.8s;
+  }
+  &:hover::before {
+    opacity: 1;
+    transform: rotate(15deg);
+  }
+  &:hover::after {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+  & span {
+    color: transparent;
+    position: relative;
+    &::before {
+      content: "A";
+      position: absolute;
+      color: $cyan;
+      transition: all 0.2s;
+    }
+  }
+}
+
+.logo:hover span::before {
+  color: white;
+  font-size: 80px;
+  transform: translate(-65%, -10%) rotate(360deg);
+}
