@@ -1,4 +1,4 @@
-<div id="topheader" class="row">
+<div id="topheader" class="row mt-2 mb-2">
   <div class="col-12">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container-fluid">
@@ -17,6 +17,15 @@
             {{-- <li class="nav-item">
               <a class="{{  request()->routeIs('contact.*') ? 'nav-link active' : 'nav-link' }}" href="{{ route('contact.index') }}">Контакты</a>
             </li>                        --}}
+            <li class="nav-item">
+              <a class="nav-link" href="#">Темы съемки</a>
+            </li> 
+            <li class="nav-item">
+              <a class="nav-link" href="#">Контакты</a>
+            </li>       
+            <li class="nav-item">
+              <a class="nav-link" href="tel:+7 900 111 11 11">+7 900 111 11 11</a>
+            </li>               
           </ul>
           <div class="#">
             @if (Route::has('login'))
@@ -32,7 +41,7 @@
                   @endauth
                 </div>
             @endif
-          </div>                
+          </div>                     
         </div>
       </div>
     </nav>
