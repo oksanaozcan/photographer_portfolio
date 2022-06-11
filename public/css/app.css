@@ -10403,6 +10403,7 @@ a {
 }
 
 .main_name {
+  margin-top: 2rem;
   color: #0dcaf0;
   font-size: 4rem;
   text-align: center;
