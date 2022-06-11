@@ -10416,3 +10416,17 @@ a {
   margin-bottom: 5rem;
   padding-left: 10rem;
 }
+
+.theme-link {
+  margin-top: 1rem;
+  border: 1px solid #8E898A;
+  padding: 0 8px;
+  border-radius: 30px;
+  margin-right: 0.7rem;
+}
+.theme-link a {
+  color: #8E898A;
+}
+.theme-link a:hover {
+  color: white;
+}

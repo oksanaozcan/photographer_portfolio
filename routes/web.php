@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\MainPageController;
+use App\Http\Controllers\ThemePageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [MainPageController::class, 'index'])->name('main');
+Route::get('/themes', [ThemePageController::class, 'index'])->name('theme.index');
 
 Route::middleware(['auth'])->group(function () {
   Route::prefix('admin')->group(function () {

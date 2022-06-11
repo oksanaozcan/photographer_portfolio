@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         'password' => bcrypt('123456789'),
         'remember_token' => Str::random(10),
       ]);
-      Theme::factory(6)->create();
+      Theme::factory(8)->create();
       Order::factory(10)->create(); 
     }
 }

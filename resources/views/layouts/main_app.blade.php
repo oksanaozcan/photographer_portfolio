@@ -13,6 +13,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" href={{ asset("plugins/icheck-bootstrap/icheck-bootstrap.min.css") }}> 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -25,7 +26,8 @@
       <main class="main">
         @yield('content')
       </main>
-            
+      
+      <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <!-- jQuery -->
       <script src={{ asset("plugins/jquery/jquery.min.js") }}></script>
       <!-- jQuery UI 1.11.4 -->
@@ -44,6 +46,9 @@
           $('.js-multiple-regions').select2();         
          
         });
-      </script>      --}}
+      </script>      --}}      
+      <script>
+        AOS.init();
+      </script>
     </body>
 </html>
