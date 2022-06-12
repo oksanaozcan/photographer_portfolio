@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\Picture;
 use App\Models\Theme;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -22,7 +23,8 @@ class DatabaseSeeder extends Seeder
         'password' => bcrypt('123456789'),
         'remember_token' => Str::random(10),
       ]);
-      Theme::factory(8)->create();
+      Theme::factory(10)->create();
       Order::factory(10)->create(); 
+      Picture::factory(30)->create();
     }
 }

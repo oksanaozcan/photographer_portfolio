@@ -6,20 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model
+class Picture extends Model
 {
   use HasFactory;
   use SoftDeletes;
 
   protected $guarded = [];
 
-  public function orders()
+  public function customer()
   {
-    return $this->hasMany(Order::class);
+    return $this->belongsTo(Customer::class);
   }
 
-  public function pictures()
+  public function theme()
   {
-    return $this->hasMany(Picture::class);
+    return $this->belongsTo(Theme::class);
   }
+
 }

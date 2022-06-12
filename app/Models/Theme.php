@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Theme extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+  use HasFactory;
+  use SoftDeletes;
 
-    protected $guarded = [];
+  protected $guarded = [];
+
+  public function pictures()
+  {
+    return $this->hasMany(Picture::class);
+  }
 }
