@@ -9,10 +9,10 @@
         <h3 class="mt-3">Профессиональный фотограф</h3>
         <h1 class="main_name">Сергей Алексеев</h1>      
         <q class="main_quot">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</q>        
-        <button type="button" class="btn btn-appoint d-block">
+        <a href="{{ route('contact.index') }}" type="button" class="btn btn-appoint d-block">
           Записаться на фотосессию
           <span></span>
-        </button>            
+        </a>            
       </div>  
       <div data-aos="zoom-in-up" class="presentation__photo">
         <img class="main__photo" src="{{ asset('images/main_photo.jpg') }}" alt="photo alekseev">

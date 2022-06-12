@@ -10430,3 +10430,7 @@ a {
 .theme-link a:hover {
   color: white;
 }
+
+.contact {
+  height: 100vh;
+}

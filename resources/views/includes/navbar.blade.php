@@ -16,13 +16,10 @@
             </li>             
             <li class="nav-item">
               <a class="{{  request()->routeIs('theme.*') ? 'nav-link active' : 'nav-link' }}" href="{{ route('theme.index') }}">Темы съемки</a>
-            </li>                       
+            </li>      
             <li class="nav-item">
-              <a class="nav-link" href="#"></a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link" href="#">Контакты</a>
-            </li>       
+              <a class="{{  request()->routeIs('contact.*') ? 'nav-link active' : 'nav-link' }}" href="{{ route('contact.index') }}">Контакты</a>
+            </li>                        
             <li class="nav-item">
               <a class="nav-link" href="tel:+7 900 111 11 11">+7 900 111 11 11</a>
             </li>               
