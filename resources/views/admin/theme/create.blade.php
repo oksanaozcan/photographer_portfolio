@@ -20,13 +20,13 @@
             @csrf
             <div class="form-group">
               <label for="theme_title">Наименование</label>
-              <input type="text" name="title" class="form-control" id="theme_title" placeholder="Введите наименование">
+              <input type="text" name="title" class="form-control" id="theme_title" placeholder="Введите наименование" value="{{ old('title') }}">
               @error('title')
                 <small id="themeTitleHelp" class="form-text text-danger">{{ $message }}</small>                  
               @enderror              
             </div>            
             <div class="form-group">
-              <textarea class="form-control" name="description" placeholder="Описание темы" style="height: 100px"></textarea>
+              <textarea class="form-control" name="description" placeholder="Описание темы" style="height: 100px">{{ old('description') }}</textarea>
               <label>Описание</label>
               @error('description')
                 <small class="form-text text-danger">{{ $message }}</small>                  

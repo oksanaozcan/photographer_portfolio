@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();     
             $table->text('description');     
-            $table->date('convenient_date');
-            $table->time('convenient_time');
+            $table->date('convenient_date')->nullable();
+            $table->time('convenient_time')->nullable();
             $table->unsignedBigInteger('customer_id');      
             $table->timestamps();
             $table->softDeletes();

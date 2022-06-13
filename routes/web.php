@@ -10,7 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [MainPageController::class, 'index'])->name('main');
 Route::get('/themes', [ThemePageController::class, 'index'])->name('theme.index');
-Route::get('/contacts', [ContactPageController::class, 'index'])->name('contact.index');
+Route::prefix('contacts')->group(function () {
+  Route::get('/', [ContactPageController::class, 'index'])->name('contact.index');
+  Route::post('/', [ContactPageController::class, 'store'])->name('contact.store');
+});
+
 
 Route::middleware(['auth'])->group(function () {
   Route::prefix('admin')->group(function () {
