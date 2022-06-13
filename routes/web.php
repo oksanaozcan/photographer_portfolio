@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\ContactPageController;
 use App\Http\Controllers\MainPageController;
@@ -29,6 +30,17 @@ Route::middleware(['auth'])->group(function () {
       Route::get('/{theme}/edit', [ThemeController::class, 'edit'])->name('admin.theme.edit');
       Route::patch('/{theme}', [ThemeController::class, 'update'])->name('admin.theme.update');
       Route::delete('/{theme}', [ThemeController::class, 'delete'])->name('admin.theme.delete');             
+    });   
+
+    Route::prefix('order')->group(function () {
+      Route::get('/', [OrderController::class, 'index'])->name('admin.order.index');
+      Route::get('/create', [OrderController::class, 'create'])->name('admin.order.create');
+      Route::get('/deleted', [OrderController::class, 'indexDeleted'])->name('admin.order.deleted'); 
+      Route::post('/', [OrderController::class, 'store'])->name('admin.order.store');
+      Route::get('/{order}', [OrderController::class, 'show'])->name('admin.order.show');
+      Route::get('/{order}/edit', [OrderController::class, 'edit'])->name('admin.order.edit');
+      // Route::patch('/{order}', [OrderController::class, 'update'])->name('admin.order.update');
+      Route::delete('/{order}', [OrderController::class, 'delete'])->name('admin.order.delete');             
     });   
     
   });

@@ -29,11 +29,7 @@ class OrderService
         $customerData->put('email', $data['email']);
         unset($data['email']);
       }   
-      if (isset($data['location'])) {
-        $customerData->put('location', $data['location']);
-        unset($data['location']);
-      }     
-
+      
       $customerData = $customerData->toArray();
       $customer = Customer::firstOrCreate($customerData); 
       

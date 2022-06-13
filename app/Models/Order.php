@@ -13,6 +13,8 @@ class Order extends Model
 
   protected $guarded = [];
 
+  protected $with = ['customer'];
+
   public function customer()
   {
     return $this->belongsTo(Customer::class);

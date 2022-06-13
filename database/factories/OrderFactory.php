@@ -17,7 +17,8 @@ class OrderFactory extends Factory
      */
     public function definition()
     {
-        return [         
+        return [      
+          'location' => $this->faker->streetAddress(),   
           'description' => $this->faker->text(),
           'convenient_date' => $this->faker->dateTimeBetween('+2 days', '+30 days'),
           'convenient_time' => $this->faker->time(),
