@@ -46,4 +46,44 @@ class OrderService
     }
   }
 
+  public function update($data, Order $order)
+  {
+    try {
+      DB::beginTransaction();
+
+      $customerData = collect();
+
+      if (isset($data['name'])) {
+        $customerData->put('name', $data['name']);       
+        unset($data['name']);
+      }      
+      if (isset($data['phone'])) {
+        $customerData->put('phone', $data['phone']);
+        unset($data['phone']);
+      }   
+      if (isset($data['email'])) {
+        $customerData->put('email', $data['email']);
+        unset($data['email']);
+      }   
+
+      if (isset($data['unique_customer_id'])) {
+        unset($data['unique_customer_id']);
+      }   
+      
+      $customerData = $customerData->toArray();
+      
+      $customer = Customer::find($order->customer->id)->update($customerData);      
+     
+      $order->update($data);      
+
+      DB::commit();
+
+      return true;
+
+    } catch (Exception $exception) {
+      DB::rollBack();
+      abort(500, $exception);
+    }    
+  }
+
 }

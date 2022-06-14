@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Order\StoreRequest;
+use App\Http\Requests\Admin\Order\UpdateRequest;
 use App\Models\Order;
-use Illuminate\Http\Request;
 
 class OrderController extends BaseController
 {
@@ -41,12 +40,15 @@ class OrderController extends BaseController
     return view('admin.order.edit', compact('order'));
   }
 
-  // public function update(UpdateRequest $request, Theme $theme)
-  // {
-  //   $data = $request->validated();
-  //   $theme->update($data);
-  //   return view('admin.theme.show', compact('theme'));
-  // }
+  public function update(UpdateRequest $request, Order $order)
+  {
+    $data = $request->validated();
+    $res = $this->service->update($data, $order);    
+
+    if ($res) {
+      return redirect()->route('admin.order.show', $order->id);
+    }
+  }
 
   public function delete(Order $order)
   {

@@ -29,6 +29,7 @@
               <li class="list-group-item">Желаемая дата: {{ $order->convenient_date }}</li>
               <li class="list-group-item">Желаемое время: {{ $order->convenient_time }}</li>              
               <li class="list-group-item">Дата заявки: {{ $order->created_at }}</li>              
+              <li class="list-group-item">Статус заявки: {{ $order->status }}</li>              
             </ul>
             <div class="card-body d-flex">
               <a href={{ route('admin.order.edit', $order->id) }} class="card-link mr-2">Изменить</a>
