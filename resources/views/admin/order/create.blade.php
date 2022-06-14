@@ -68,7 +68,20 @@
               @error('convenient_time')
                 <small class="form-text text-danger">{{ $message }}</small>                  
               @enderror               
-            </div>              
+            </div>           
+            
+            <div class="form-group">
+              <label>Статус заявки</label>
+              <select class="form-select form-control" name="status">                                
+                <option value="new" {{ 'new' == old('status') ? ' selected' : '' }}>new</option>                  
+                <option value="processing" {{ 'processing' == old('status') ? ' selected' : '' }}>processing</option>                  
+                <option value="completed" {{ 'completed' == old('status') ? ' selected' : '' }}>completed</option>                            
+              </select>
+              @error('status')
+                <small class="form-text text-danger">{{ $message }}</small>                  
+              @enderror  
+            </div>    
+            
             <button type="submit" class="btn btn-primary">Отправить</button>
           </form>
         </div>

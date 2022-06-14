@@ -40,7 +40,7 @@
                   <td>{{ $item->title }}</td>
                   <td>{{ $item->description }}</td>
                   <td>{{ $item->created_at }}</td>
-                  <td>#</td>
+                  <td>{{ $item->pictures->count() }}</td>
                   <td class="d-flex">
                     <a href={{ route('admin.theme.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
                     <a href={{ route('admin.theme.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>

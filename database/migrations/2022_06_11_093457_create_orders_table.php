@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('convenient_date')->nullable();
             $table->time('convenient_time')->nullable();
             $table->unsignedBigInteger('customer_id');      
+            $table->enum('status', ['new', 'processing', 'completed'])->default('new');
             $table->timestamps();
             $table->softDeletes();
 

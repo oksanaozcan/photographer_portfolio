@@ -31,6 +31,7 @@ class StoreRequest extends FormRequest
         'description' => 'required|string|max:2000',
         'convenient_date' => 'required|date',
         'convenient_time' => 'nullable',        
+        'status' => 'required'
       ];
     }
 }

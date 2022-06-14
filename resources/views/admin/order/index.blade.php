@@ -29,7 +29,7 @@
                 <th scope="col">Клиент</th>                              
                 <th scope="col">Локация</th>                              
                 <th scope="col">Желаемая дата</th>
-                <th scope="col">Желаемое время</th>                
+                <th scope="col">Статус</th>                
                 <th scope="col">Действия</th>
               </tr>
             </thead>
@@ -40,7 +40,7 @@
                   <td>{{ $item->customer->name }}</td>                                  
                   <td>{{ $item->location }}</td>                                  
                   <td>{{ $item->convenient_date }}</td>
-                  <td>{{ $item->convenient_time }}</td>                         
+                  <td>{{ $item->status }}</td>                         
                   <td class="d-flex">
                     <a href={{ route('admin.order.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
                     <a href={{ route('admin.order.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>
