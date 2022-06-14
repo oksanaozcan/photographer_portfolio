@@ -20,6 +20,12 @@ class Customer extends Model
 
   public function pictures()
   {
-    return $this->hasMany(Picture::class);
+    return $this->hasManyThrough(
+      Picture::class, 
+      Order::class, 
+      'customer_id', 
+      'order_id', 
+      'id'
+    );
   }
 }

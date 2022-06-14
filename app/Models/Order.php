@@ -19,4 +19,9 @@ class Order extends Model
   {
     return $this->belongsTo(Customer::class);
   }
+
+  public function pictures()
+  {
+    return $this->hasMany(Picture::class);
+  }
 }

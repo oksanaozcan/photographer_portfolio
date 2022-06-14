@@ -6,6 +6,9 @@ use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\ContactPageController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\ThemePageController;
+use App\Models\Customer;
+use App\Models\Order;
+use App\Models\Picture;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,6 +19,10 @@ Route::prefix('contacts')->group(function () {
   Route::post('/', [ContactPageController::class, 'store'])->name('contact.store');
 });
 
+Route::get('/test', function () {
+  $res = Order::find(2);
+  dd($res->pictures);
+});
 
 Route::middleware(['auth'])->group(function () {
   Route::prefix('admin')->group(function () {

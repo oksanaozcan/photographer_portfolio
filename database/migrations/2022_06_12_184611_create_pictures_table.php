@@ -20,12 +20,12 @@ return new class extends Migration
             $table->integer('size');
             $table->text('description');
             $table->unsignedBigInteger('theme_id');
-            $table->unsignedBigInteger('customer_id');
+            $table->unsignedBigInteger('order_id');
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('theme_id')->references('id')->on('themes');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 

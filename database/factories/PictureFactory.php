@@ -22,7 +22,7 @@ class PictureFactory extends Factory
           'size' => $this->faker->numberBetween(50, 300),
           'description' => $this->faker->text(),
           'theme_id' => $this->faker->numberBetween(1, 10),
-          'customer_id' => $this->faker->numberBetween(1, 10)
+          'order_id' => $this->faker->numberBetween(1, 10)
         ];
     }
 }

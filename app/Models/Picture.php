@@ -13,7 +13,7 @@ class Picture extends Model
 
   protected $guarded = [];
 
-  public function customer()
+  public function order()
   {
     return $this->belongsTo(Customer::class);
   }
@@ -21,6 +21,17 @@ class Picture extends Model
   public function theme()
   {
     return $this->belongsTo(Theme::class);
+  }
+
+  public function customer()
+  {
+    return $this->hasOneThrough(
+      Customer::class, 
+      Order::class, 
+      'customer_id', 
+      'id', 
+      'order_id'
+    );
   }
 
 }
