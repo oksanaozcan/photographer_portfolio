@@ -40,7 +40,7 @@
               @enderror              
             </div>
 
-            @include('admin.includes.only_order_fields_form')          
+            @include('admin.includes.only_order_fields_create_form')          
             
             <button type="submit" class="btn btn-primary">Отправить</button>
           </form>

@@ -6,6 +6,7 @@ use App\Http\Controllers\BaseController;
 use App\Http\Requests\Admin\Order\StoreRequest;
 use App\Http\Requests\Admin\Order\StoreSingleOrderRequest;
 use App\Http\Requests\Admin\Order\UpdateRequest;
+use App\Http\Requests\Admin\Order\UpdateSingleOrderRequest;
 use App\Models\Customer;
 use App\Models\Order;
 
@@ -55,6 +56,12 @@ class OrderController extends BaseController
     return view('admin.order.edit', compact('order'));
   }
 
+  public function editSingleOrder(Order $order)
+  {
+    $customers = Customer::all(['id', 'name', 'phone']);
+    return view('admin.order.edit-single-order', compact('order', 'customers'));
+  }
+
   public function update(UpdateRequest $request, Order $order)
   {
     $data = $request->validated();
@@ -63,6 +70,13 @@ class OrderController extends BaseController
     if ($res) {
       return redirect()->route('admin.order.show', $order->id);
     }
+  }
+
+  public function updateSingleOrder(UpdateSingleOrderRequest $request, Order $order)
+  {
+    $data = $request->validated();
+    $order->update($data);
+    return redirect()->route('admin.order.show', $order->id);
   }
 
   public function delete(Order $order)

@@ -45,7 +45,9 @@ Route::middleware(['auth'])->group(function () {
       Route::post('/store-single-order', [OrderController::class, 'storeSingleOrder'])->name('admin.order.store-single-order');
       Route::get('/{order}', [OrderController::class, 'show'])->name('admin.order.show');
       Route::get('/{order}/edit', [OrderController::class, 'edit'])->name('admin.order.edit');
-      Route::patch('/{order}', [OrderController::class, 'update'])->name('admin.order.update');
+      Route::get('/{order}/edit-single-order', [OrderController::class, 'editSingleOrder'])->name('admin.order.edit-single-order');
+      Route::patch('/{order}', [OrderController::class, 'update'])->name('admin.order.update');      
+      Route::patch('/{order}/update-single-order', [OrderController::class, 'updateSingleOrder'])->name('admin.order.update-single-order');      
       Route::delete('/{order}', [OrderController::class, 'delete'])->name('admin.order.delete');             
     });   
     

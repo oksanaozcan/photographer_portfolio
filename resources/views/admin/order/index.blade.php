@@ -43,8 +43,18 @@
                   <td>{{ $item->convenient_date }}</td>
                   <td>{{ $item->status }}</td>                         
                   <td class="d-flex">
-                    <a href={{ route('admin.order.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
-                    <a href={{ route('admin.order.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>
+                    <a href={{ route('admin.order.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>            
+
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Изменить
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href={{ route('admin.order.edit', $item->id) }}>Вместе с клиентом</a>
+                        <a class="dropdown-item" href={{ route('admin.order.edit-single-order', $item->id) }}>Данные заявки</a>
+                      </div>
+                    </div>
+
                     <form action="{{ route('admin.order.delete', $item->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
