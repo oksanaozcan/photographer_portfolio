@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\PictureController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\ContactPageController;
 use App\Http\Controllers\MainPageController;
@@ -61,6 +62,17 @@ Route::middleware(['auth'])->group(function () {
       Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('admin.customer.edit');
       Route::patch('/{customer}', [CustomerController::class, 'update'])->name('admin.customer.update');
       Route::delete('/{customer}', [CustomerController::class, 'delete'])->name('admin.customer.delete');             
+    });   
+
+    Route::prefix('picture')->group(function () {
+      Route::get('/', [PictureController::class, 'index'])->name('admin.picture.index');
+      Route::get('/create', [PictureController::class, 'create'])->name('admin.picture.create');
+      Route::get('/deleted', [PictureController::class, 'indexDeleted'])->name('admin.picture.deleted'); 
+      Route::post('/', [PictureController::class, 'store'])->name('admin.picture.store');
+      Route::get('/{picture}', [PictureController::class, 'show'])->name('admin.picture.show');
+      Route::get('/{picture}/edit', [PictureController::class, 'edit'])->name('admin.picture.edit');
+      Route::patch('/{picture}', [PictureController::class, 'update'])->name('admin.picture.update');
+      Route::delete('/{picture}', [PictureController::class, 'delete'])->name('admin.picture.delete');             
     });   
     
   });
