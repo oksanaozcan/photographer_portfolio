@@ -11,8 +11,9 @@
           <h1 class="m-0">Заявки</h1>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
-          <a href={{ route('admin.order.create') }} type="button" class="btn btn-primary">Добавить</a>
-        </div>
+          <a href={{ route('admin.order.create') }} type="button" class="btn btn-primary">Добавить заявку и клиента</a>
+          <a href={{ route('admin.order.create-single-order') }} type="button" class="btn btn-primary mr-3">Добавить только заявку</a>
+        </div>        
       </div>
     </div>
   </div>  

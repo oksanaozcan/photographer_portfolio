@@ -39,8 +39,10 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('order')->group(function () {
       Route::get('/', [OrderController::class, 'index'])->name('admin.order.index');
       Route::get('/create', [OrderController::class, 'create'])->name('admin.order.create');
+      Route::get('/create-single-order', [OrderController::class, 'createSingleOrder'])->name('admin.order.create-single-order');
       Route::get('/deleted', [OrderController::class, 'indexDeleted'])->name('admin.order.deleted'); 
       Route::post('/', [OrderController::class, 'store'])->name('admin.order.store');
+      Route::post('/store-single-order', [OrderController::class, 'storeSingleOrder'])->name('admin.order.store-single-order');
       Route::get('/{order}', [OrderController::class, 'show'])->name('admin.order.show');
       Route::get('/{order}/edit', [OrderController::class, 'edit'])->name('admin.order.edit');
       Route::patch('/{order}', [OrderController::class, 'update'])->name('admin.order.update');

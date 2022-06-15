@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\Admin\Order\StoreRequest;
+use App\Http\Requests\Admin\Order\StoreSingleOrderRequest;
 use App\Http\Requests\Admin\Order\UpdateRequest;
+use App\Models\Customer;
 use App\Models\Order;
 
 class OrderController extends BaseController
@@ -20,6 +22,12 @@ class OrderController extends BaseController
     return view('admin.order.create');
   }
 
+  public function createSingleOrder()
+  {
+    $customers = Customer::all(['id', 'name', 'phone']);
+    return view('admin.order.create-single-order', compact('customers'));
+  }
+
   public function store(StoreRequest $request)
   {
     $data = $request->validated();
@@ -28,6 +36,13 @@ class OrderController extends BaseController
     if ($res) {
       return redirect()->route('admin.order.index');
     }
+  }
+
+  public function storeSingleOrder(StoreSingleOrderRequest $request)
+  {
+    $data = $request->validated();
+    Order::firstOrCreate($data);
+    return redirect()->route('admin.order.index');    
   }
 
   public function show(Order $order)
