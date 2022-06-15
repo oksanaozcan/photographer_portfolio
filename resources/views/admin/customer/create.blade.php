@@ -8,21 +8,20 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Форма для добавления заявки и клиента</h1>
+          <h1 class="m-0">Форма для добавления клиента</h1>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
-          <a href={{ route('admin.order.index') }} type="button" class="btn btn-outline-secondary">Назад к списку</a>
+          <a href={{ route('admin.customer.index') }} type="button" class="btn btn-outline-secondary">Назад к списку</a>
         </div>
       </div>
       <div class="row mb-2">
         <div class="col-sm-6 mt-2">
-          <form class="mb-3" action="{{ route('admin.order.store') }}" method="POST">
+          <form action={{ route('admin.customer.store') }} method="POST">
             @csrf
-            
-            @include('admin.includes.only_customer_fields_create_form')          
-            @include('admin.includes.only_order_fields_create_form')          
-            
-            <button type="submit" class="btn btn-primary">Отправить</button>
+
+            @include('admin.includes.only_customer_fields_create_form')
+           
+            <button type="submit" class="btn btn-primary">Добавить</button>
           </form>
         </div>
       </div>

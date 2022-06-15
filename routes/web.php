@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\ContactPageController;
@@ -49,6 +50,17 @@ Route::middleware(['auth'])->group(function () {
       Route::patch('/{order}', [OrderController::class, 'update'])->name('admin.order.update');      
       Route::patch('/{order}/update-single-order', [OrderController::class, 'updateSingleOrder'])->name('admin.order.update-single-order');      
       Route::delete('/{order}', [OrderController::class, 'delete'])->name('admin.order.delete');             
+    });   
+
+    Route::prefix('customer')->group(function () {
+      Route::get('/', [CustomerController::class, 'index'])->name('admin.customer.index');
+      Route::get('/create', [CustomerController::class, 'create'])->name('admin.customer.create');
+      Route::get('/deleted', [CustomerController::class, 'indexDeleted'])->name('admin.customer.deleted'); 
+      Route::post('/', [CustomerController::class, 'store'])->name('admin.customer.store');
+      Route::get('/{customer}', [CustomerController::class, 'show'])->name('admin.customer.show');
+      Route::get('/{customer}/edit', [CustomerController::class, 'edit'])->name('admin.customer.edit');
+      Route::patch('/{customer}', [CustomerController::class, 'update'])->name('admin.customer.update');
+      Route::delete('/{customer}', [CustomerController::class, 'delete'])->name('admin.customer.delete');             
     });   
     
   });

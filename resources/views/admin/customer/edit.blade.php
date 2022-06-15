@@ -8,47 +8,45 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Форма для редактирования заявки</h1>
+          <h1 class="m-0">Форма для редактирования {{ $customer->name }}</h1>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
-          <a href={{ route('admin.order.index') }} type="button" class="btn btn-outline-secondary">Назад к списку</a>
+          <a href={{ route('admin.customer.index') }} type="button" class="btn btn-outline-secondary">Назад к списку</a>
         </div>
       </div>
       <div class="row mb-2">
         <div class="col-sm-6 mt-2">
-          <form class="mb-3" action="{{ route('admin.order.update', $order->id) }}" method="POST">
+          <form action={{ route('admin.customer.update', $customer->id) }} method="POST">
             @csrf
             @method('PATCH')
-                        
+
             <div class="form-group mb-3">
               <label>Имя клиента:</label>
-              <input type="text" class="form-control" name="name" value="{{ $order->customer->name }}">  
+              <input type="text" class="form-control" name="name" value="{{ $customer->name }}">  
               @error('name')
                 <small class="form-text text-danger">{{ $message }}</small>                  
               @enderror                     
             </div>
             <div class="form-group mb-3">
               <label>Телефон клиента</label>
-              <input type="text" class="form-control" name="phone" value="{{ $order->customer->phone }}">    
+              <input type="text" class="form-control" name="phone" value="{{ $customer->phone }}">    
               @error('phone')
                 <small class="form-text text-danger">{{ $message }}</small>                  
               @enderror                   
             </div>
             <div class="form-group mb-3">
               <label>Почта клиента</label>
-              <input type="email" class="form-control" name="email" value="{{ $order->customer->email }}">         
+              <input type="email" class="form-control" name="email" value="{{ $customer->email }}">         
               @error('email')
                 <small class="form-text text-danger">{{ $message }}</small>                  
               @enderror              
             </div>
-            
-            @include('admin.includes.only_order_fields_edit_form')
 
             <div class="form-group">
-              <input type="hidden" name="unique_customer_id" value="{{ $order->customer->id }}">
+              <input type="hidden" name="unique_customer_id" value="{{ $customer->id }}">
             </div>
-            
-            <button type="submit" class="btn btn-primary">Отправить</button>
+           
+            <button type="submit" class="btn btn-primary">Обновить</button>
           </form>
         </div>
       </div>
@@ -62,6 +60,8 @@
         
        
       </div>     
-    </div> 
+    </div>
+      
+   
     
 @endsection
