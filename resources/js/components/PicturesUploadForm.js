@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import {useDropzone} from 'react-dropzone';
 
 function PicturesUploadForm() {  
@@ -20,6 +20,28 @@ function PicturesUploadForm() {
     setDropedFiles(dropedFiles.filter(item => item.preview !== preview)); 
   }
 
+  const store = (e) => {
+    e.preventDefault();        
+
+    let data = new FormData();    
+    dropedFiles.forEach(file => {
+      data.append('pictures[]', file)      
+    }) 
+    const config = {
+      headers: {
+          'content-type': 'multipart/form-data'
+      }
+    }
+
+    axios.post('/admin/picture', data, config)
+    .then(res => {
+      if (res.status == 200) {        
+        setDropedFiles([]);        
+      }
+    })
+    .catch(error => console.log(error.res))
+  }
+
   const selected_images = dropedFiles?.map(img => (
     <div key={img.preview}>
       <img src={img.preview} className="img-thumbnail" style={{ width:"150px" }} alt="alt attr"/>
@@ -30,6 +52,8 @@ function PicturesUploadForm() {
 
   return (
     <div>
+      <form onSubmit={store}>
+      
       <div className='jumbotron' {...getRootProps()}>
         <input {...getInputProps()} />
         {
@@ -39,6 +63,12 @@ function PicturesUploadForm() {
         }
       </div>
       {selected_images}
+
+        <div className="d-block">
+          <button type="submit" className="btn btn-primary btn-lg btn-block mt-1 w-100">Submit</button> 
+        </div>    
+      </form>
+      
     </div>
   )
 }

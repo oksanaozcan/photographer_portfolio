@@ -5522,6 +5522,26 @@ function PicturesUploadForm() {
     }));
   };
 
+  var store = function store(e) {
+    e.preventDefault();
+    var data = new FormData();
+    dropedFiles.forEach(function (file) {
+      data.append('pictures[]', file);
+    });
+    var config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    };
+    axios__WEBPACK_IMPORTED_MODULE_2___default().post('/admin/picture', data, config).then(function (res) {
+      if (res.status == 200) {
+        setDropedFiles([]);
+      }
+    })["catch"](function (error) {
+      return console.log(error.res);
+    });
+  };
+
   var selected_images = dropedFiles === null || dropedFiles === void 0 ? void 0 : dropedFiles.map(function (img) {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
@@ -5545,16 +5565,26 @@ function PicturesUploadForm() {
       })]
     }, img.preview);
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
-      className: "jumbotron"
-    }, getRootProps()), {}, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", _objectSpread({}, getInputProps())), isDragActive ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        children: "Drop the files here ..."
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        children: "Drag 'n' drop some files here, or click to select files"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+      onSubmit: store,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
+        className: "jumbotron"
+      }, getRootProps()), {}, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", _objectSpread({}, getInputProps())), isDragActive ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          children: "Drop the files here ..."
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+          children: "Drag 'n' drop some files here, or click to select files"
+        })]
+      })), selected_images, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "d-block",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          type: "submit",
+          className: "btn btn-primary btn-lg btn-block mt-1 w-100",
+          children: "Submit"
+        })
       })]
-    })), selected_images]
+    })
   });
 }
 

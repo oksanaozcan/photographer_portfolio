@@ -7,6 +7,8 @@ use App\Http\Requests\Admin\Picture\StoreRequest;
 use App\Http\Requests\Admin\Picture\UpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Picture;
+use Illuminate\Support\Facades\Storage;
+use Barryvdh\Debugbar\Facades\Debugbar;
 
 class PictureController extends Controller
 {
@@ -22,11 +24,19 @@ class PictureController extends Controller
   }
 
   public function store(StoreRequest $request)
-  {
-    dd($request);
+  {    
     $data = $request->validated();
-    Picture::firstOrCreate($data);
-    return redirect()->route('admin.picture.index');
+    $pictures = $data['pictures'];
+
+    foreach ($pictures as $picture) {
+      $filePath = Storage::disk('public')->put('images', $picture);       
+
+      Picture::create([
+        // 'path' => $filePath,
+        'url' => url('/storage/' . $filePath),        
+      ]);
+    }
+    return response()->json(["message" => "success"]);
   }
 
   public function show(Picture $picture)
