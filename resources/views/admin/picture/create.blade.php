@@ -15,17 +15,8 @@
         </div>
       </div>
       <div class="row mb-2">
-        <div class="col-sm-6 mt-2">
-          <form action={{ route('admin.picture.store') }} method="POST" enctype="multipart/form-data">
-            @csrf
-
-            
-
-
-            
-           
-            <button type="submit" class="btn btn-primary">Добавить</button>
-          </form>
+        <div class="col-sm-6 mt-2" id="picturesUploadForm">
+          
         </div>
       </div>
     </div>
