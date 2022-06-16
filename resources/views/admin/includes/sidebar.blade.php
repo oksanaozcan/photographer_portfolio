@@ -108,6 +108,36 @@
           </ul>
         </li>
 
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon far fa-image"></i>
+            <p>
+              Фотографии
+              <i class="fas fa-angle-left right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ route('admin.picture.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Список</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('admin.picture.create') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Добавить</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ route('admin.picture.deleted') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Удаленные</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
         {{-- <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-tag"></i>

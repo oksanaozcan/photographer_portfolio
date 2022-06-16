@@ -12,7 +12,8 @@ class PictureController extends Controller
 {
   public function index()
   {
-    return view('admin.picture.index');
+    $pictures = Picture::all();
+    return view('admin.picture.index', compact('pictures'));
   }
 
   public function create()

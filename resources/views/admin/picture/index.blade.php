@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Клиенты</h1>
+          <h1 class="m-0">Фотографии</h1>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
           <a href={{ route('admin.customer.create') }} type="button" class="btn btn-primary">Добавить</a>
@@ -26,27 +26,29 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Телефон</th>
-                <th scope="col">Почта</th>
-                <th scope="col">Кол-во заявок</th>               
-                <th scope="col">Кол-во фото</th>
+                <th scope="col">Название</th>
+                <th scope="col">Размер(mb)</th>
+                <th scope="col">Тема</th>
+                <th scope="col">Клиент</th>               
+                <th scope="col">Дата загрузки</th>
                 <th scope="col">Действия</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($customers as $item)
+              @foreach ($pictures as $item)
                 <tr>
-                  <th>{{ $item->id }}</th>
-                  <td>{{ $item->name }}</td>
-                  <td>{{ $item->phone }}</td>
-                  <td>{{ $item->email }}</td>
-                  <td>{{ $item->orders->count() }}</td>
-                  <td>{{ $item->pictures->count() }}</td>
+                  <th>
+                    <img class="img-thumbnail" src="{{ url($item->url) }}"/>
+                  </th>
+                  <td>{{ $item->title }}</td>
+                  <td>{{ $item->size }}</td>
+                  <td>{{ $item->theme->title }}</td>
+                  <td>{{ $item->customer->name }}</td>
+                  <td>{{ $item->created_at }}</td>
                   <td class="d-flex">
-                    <a href={{ route('admin.customer.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
-                    <a href={{ route('admin.customer.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>
-                    <form action="{{ route('admin.customer.delete', $item->id) }}" method="POST">
+                    <a href={{ route('admin.picture.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
+                    <a href={{ route('admin.picture.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>
+                    <form action="{{ route('admin.picture.delete', $item->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="btn btn-danger">Удалить</button>

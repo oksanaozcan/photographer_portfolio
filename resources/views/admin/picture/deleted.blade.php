@@ -8,7 +8,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Удаленные Клиенты</h1>
+          <h1 class="m-0">Удаленные Фото</h1>
         </div>
         {{-- <div class="col-sm-6 d-flex flex-row-reverse">
           <a href={{ route('admin.fertilizers.create') }} type="button" class="btn btn-primary">Добавить вид</a>
