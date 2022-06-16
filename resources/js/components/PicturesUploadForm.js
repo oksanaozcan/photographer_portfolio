@@ -1,11 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { useState, useCallback } from 'react';
 import {useDropzone} from 'react-dropzone';
+import Select from 'react-select';
 
 function PicturesUploadForm() {  
+  const [orders, setOrders] = useState([]);
+  const [description, setDescription] = useState('');
   const [dropedFiles, setDropedFiles] = useState([]);
+
+  const getOrders = () => {    
+    axios.get('/api/admin/order-processing')
+    .then(res => {      
+      setOrders(res.data.data);      
+    })
+    .catch(e => console.log(e.res));     
+  }
+
+  useEffect(() => {
+    getOrders();
+  }, []);
 
   const onDrop = useCallback(acceptedFiles => {   
     setDropedFiles(acceptedFiles.map(file => 
@@ -23,19 +38,23 @@ function PicturesUploadForm() {
   const store = (e) => {
     e.preventDefault();        
 
-    let data = new FormData();    
+    let data = new FormData();
+    data.append('description', description);
+
     dropedFiles.forEach(file => {
       data.append('pictures[]', file)      
     }) 
     const config = {
       headers: {
-          'content-type': 'multipart/form-data'
+        'content-type': 'multipart/form-data'
       }
     }
 
     axios.post('/admin/picture', data, config)
     .then(res => {
       if (res.status == 200) {        
+        console.log('needs to make notify status upload');
+        setDescription('');
         setDropedFiles([]);        
       }
     })
@@ -45,6 +64,7 @@ function PicturesUploadForm() {
   const selected_images = dropedFiles?.map(img => (
     <div key={img.preview}>
       <img src={img.preview} className="img-thumbnail" style={{ width:"150px" }} alt="alt attr"/>
+      <span className='m-auto'>{img.path} size: {img.size}</span>
       <button onClick={() => handleRemoveFile(img.preview)} type='button' className='btn btn-danger'><i className='fas fa-trash'></i></button>      
       <div className="dropdown-divider"></div>
     </div>    
@@ -53,6 +73,10 @@ function PicturesUploadForm() {
   return (
     <div>
       <form onSubmit={store}>
+
+      <div className="form-group">        
+        <textarea name='description' className="form-control mb-3" placeholder='Описание' rows="4" value={description} onChange={(e) => setDescription(e.target.value)}/>               
+      </div>       
       
       <div className='jumbotron' {...getRootProps()}>
         <input {...getInputProps()} />

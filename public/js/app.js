@@ -5495,12 +5495,34 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function PicturesUploadForm() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      dropedFiles = _useState2[0],
-      setDropedFiles = _useState2[1];
+      orders = _useState2[0],
+      setOrders = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      description = _useState4[0],
+      setDescription = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      dropedFiles = _useState6[0],
+      setDropedFiles = _useState6[1];
+
+  var getOrders = function getOrders() {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/admin/order-processing').then(function (res) {
+      setOrders(res.data.data);
+    })["catch"](function (e) {
+      return console.log(e.res);
+    });
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getOrders();
+  }, []);
   var onDrop = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function (acceptedFiles) {
     setDropedFiles(acceptedFiles.map(function (file) {
       return Object.assign(file, {
@@ -5525,6 +5547,7 @@ function PicturesUploadForm() {
   var store = function store(e) {
     e.preventDefault();
     var data = new FormData();
+    data.append('description', description);
     dropedFiles.forEach(function (file) {
       data.append('pictures[]', file);
     });
@@ -5535,6 +5558,8 @@ function PicturesUploadForm() {
     };
     axios__WEBPACK_IMPORTED_MODULE_2___default().post('/admin/picture', data, config).then(function (res) {
       if (res.status == 200) {
+        console.log('needs to make notify status upload');
+        setDescription('');
         setDropedFiles([]);
       }
     })["catch"](function (error) {
@@ -5551,6 +5576,9 @@ function PicturesUploadForm() {
           width: "150px"
         },
         alt: "alt attr"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+        className: "m-auto",
+        children: [img.path, " size: ", img.size]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
         onClick: function onClick() {
           return handleRemoveFile(img.preview);
@@ -5568,7 +5596,19 @@ function PicturesUploadForm() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
       onSubmit: store,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "form-group",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
+          name: "description",
+          className: "form-control mb-3",
+          placeholder: "\u041E\u043F\u0438\u0441\u0430\u043D\u0438\u0435",
+          rows: "4",
+          value: description,
+          onChange: function onChange(e) {
+            return setDescription(e.target.value);
+          }
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", _objectSpread(_objectSpread({
         className: "jumbotron"
       }, getRootProps()), {}, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", _objectSpread({}, getInputProps())), isDragActive ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {

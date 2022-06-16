@@ -7,8 +7,10 @@ use App\Http\Requests\Admin\Order\StoreRequest;
 use App\Http\Requests\Admin\Order\StoreSingleOrderRequest;
 use App\Http\Requests\Admin\Order\UpdateRequest;
 use App\Http\Requests\Admin\Order\UpdateSingleOrderRequest;
+use App\Http\Resources\Admin\OrderResource;
 use App\Models\Customer;
 use App\Models\Order;
+use Barryvdh\Debugbar\Facades\Debugbar;
 
 class OrderController extends BaseController
 {
@@ -90,4 +92,5 @@ class OrderController extends BaseController
     $trashedOrders = Order::onlyTrashed()->get();
     return view('admin.order.deleted', compact('trashedOrders'));
   }
+    
 }
