@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
-            $table->string('title')->nullable();
+            $table->string('path');
             $table->string('url');
-            $table->integer('size')->nullable();
-            $table->text('description')->nullable();
-            $table->unsignedBigInteger('theme_id')->nullable();
-            $table->unsignedBigInteger('order_id')->nullable();
+            $table->integer('size');
+            $table->text('description');
+            $table->unsignedBigInteger('theme_id');
+            $table->unsignedBigInteger('order_id');
             $table->timestamps();
             $table->softDeletes();
 

@@ -26,7 +26,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Название</th>
+                <th scope="col">Путь</th>
                 <th scope="col">Размер(mb)</th>
                 <th scope="col">Тема</th>
                 <th scope="col">Клиент</th>               
@@ -40,7 +40,7 @@
                   <th>
                     <img class="img-thumbnail" src="{{ url($item->url) }}"/>
                   </th>
-                  <td>{{ $item->title }}</td>
+                  <td>{{ $item->path }}</td>
                   <td>{{ $item->size }}</td>
                   <td>{{ $item->theme->title }}</td>
                   <td>{{ $item->customer->name }}</td>

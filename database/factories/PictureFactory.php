@@ -17,7 +17,7 @@ class PictureFactory extends Factory
     public function definition()
     {
         return [
-          'title' => $this->faker->sentence(3),
+          'path' => $this->faker->sentence(3),
           'url' => $this->faker->imageUrl(),
           'size' => $this->faker->numberBetween(50, 300),
           'description' => $this->faker->text(),
