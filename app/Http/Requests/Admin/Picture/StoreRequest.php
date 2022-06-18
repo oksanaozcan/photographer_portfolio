@@ -24,6 +24,9 @@ class StoreRequest extends FormRequest
     public function rules()
     {
       return [
+        'description' => 'nullable|string',
+        'theme_id' => 'required',
+        'order_id' => 'required',
         'pictures' => 'nullable|array',
       ];
     }

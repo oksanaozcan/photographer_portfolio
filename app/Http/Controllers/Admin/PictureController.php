@@ -7,8 +7,9 @@ use App\Http\Requests\Admin\Picture\StoreRequest;
 use App\Http\Requests\Admin\Picture\UpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Picture;
-use Illuminate\Support\Facades\Storage;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use Barryvdh\Debugbar\Twig\Extension\Debug;
+use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
 {
@@ -25,15 +26,21 @@ class PictureController extends Controller
 
   public function store(StoreRequest $request)
   {    
-    $data = $request->validated();
+    $data = $request->validated();    
     $pictures = $data['pictures'];
 
     foreach ($pictures as $picture) {
-      $filePath = Storage::disk('public')->put('images', $picture);       
+      $filePath = Storage::disk('public')->put('images', $picture); 
+
+      Debugbar::debug($filePath);
 
       Picture::create([
-        // 'path' => $filePath,
+        'path' => $filePath,        
         'url' => url('/storage/' . $filePath),        
+        'size' => $picture->getSize(),
+        'description' => $data['description'],
+        'theme_id' => $data['theme_id'],
+        'order_id' => $data['order_id'],
       ]);
     }
     return response()->json(["message" => "success"]);
@@ -66,5 +73,5 @@ class PictureController extends Controller
   {
     $trashedPictures = Picture::onlyTrashed()->get();
     return view('admin.picture.deleted', compact('trashedPictures'));
-  }
+  } 
 }
