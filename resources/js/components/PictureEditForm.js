@@ -68,8 +68,9 @@ function PictureEditForm({pictureid}) {
 
     axios.patch(`/admin/picture/${pictureid}`, data)
     .then(res => {
-      if (res.status == 200) {        
-       
+      if (res.status == 200) {
+        console.log(`${window.location.host}/admin/picture/${pictureid}`)      
+        window.location.href = `/admin/picture/${pictureid}`;
       }
     })
     .catch(error => console.log(error.res))

@@ -7385,7 +7385,10 @@ function PictureEditForm(_ref) {
       order_id: selectedOrder.id
     };
     axios__WEBPACK_IMPORTED_MODULE_2___default().patch("/admin/picture/".concat(pictureid), data).then(function (res) {
-      if (res.status == 200) {}
+      if (res.status == 200) {
+        console.log("".concat(window.location.host, "/admin/picture/").concat(pictureid));
+        window.location.href = "/admin/picture/".concat(pictureid);
+      }
     })["catch"](function (error) {
       return console.log(error.res);
     });
