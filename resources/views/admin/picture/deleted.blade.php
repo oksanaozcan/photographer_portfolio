@@ -26,18 +26,22 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Дата регистрации</th>
+                <th scope="col">Тема</th>
+                <th scope="col">Клиент</th>
+                <th scope="col">Дата загрузки</th>
                 <th scope="col">Дата удаления</th>
                 <th scope="col">Действия</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($trashedCustomers as $item)
+              @foreach ($trashedPictures as $item)
                 <tr>
-                  <th>{{ $item->id }}</th>
-                  <td>{{ $item->name }}</td>
-                  <td>{{ $item->created_at }}</td>
+                  <td>
+                    <img style="width:100px;" src="{{ url($item->url) }}"/>                    
+                  </td>
+                  <td>{{ $item->theme->title }}</td>
+                  <td>{{ $item->customer->name }}</td>
+                  <td>{{ $item->created_at }}</td>                
                   <td>{{ $item->deleted_at }}</td>
                   <td class="d-flex">
                     {{-- <a href={{ route('admin.fertilizers.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>

@@ -37,9 +37,9 @@
             <tbody>
               @foreach ($pictures as $item)
                 <tr>
-                  <th>
+                  <td>
                     <img style="width:100px;" src="{{ url($item->url) }}"/>                    
-                  </th>
+                  </td>
                   <td>{{ $item->url }}</td>
                   <td>{{ $item->size }}</td>
                   <td>{{ $item->theme->title }}</td>
