@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Picture\StoreRequest;
 use App\Http\Requests\Admin\Picture\UpdateRequest;
+use App\Http\Resources\Admin\PictureResource;
 use Illuminate\Http\Request;
 use App\Models\Picture;
 use Barryvdh\Debugbar\Facades\Debugbar;
@@ -60,7 +61,7 @@ class PictureController extends Controller
   {
     $data = $request->validated();
     $picture->update($data);
-    return redirect()->route('admin.picture.show', $picture->id);
+    return response()->json(['message' => 'success']);   
   }
 
   public function delete(Picture $picture)
@@ -73,5 +74,5 @@ class PictureController extends Controller
   {
     $trashedPictures = Picture::onlyTrashed()->get();
     return view('admin.picture.deleted', compact('trashedPictures'));
-  } 
+  }   
 }

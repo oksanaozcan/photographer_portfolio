@@ -13,3 +13,4 @@ require('./bootstrap');
  */
 
 require('./components/PicturesUploadForm');
+require('./components/PictureEditForm');

@@ -7220,6 +7220,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./components/PicturesUploadForm */ "./resources/js/components/PicturesUploadForm.js");
 
+__webpack_require__(/*! ./components/PictureEditForm */ "./resources/js/components/PictureEditForm.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -7255,6 +7257,228 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/PictureEditForm.js":
+/*!****************************************************!*\
+  !*** ./resources/js/components/PictureEditForm.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.esm.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+function PictureEditForm(_ref) {
+  var pictureid = _ref.pictureid;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      orders = _useState2[0],
+      setOrders = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      themes = _useState4[0],
+      setThemes = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      url = _useState6[0],
+      setUrl = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      description = _useState8[0],
+      setDescription = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+    id: '',
+    title: ''
+  }]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      selectedTheme = _useState10[0],
+      setSelectedTheme = _useState10[1];
+
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+    id: '',
+    location: '',
+    customer_name: '',
+    description: ''
+  }]),
+      _useState12 = _slicedToArray(_useState11, 2),
+      selectedOrder = _useState12[0],
+      setSelectedOrder = _useState12[1];
+
+  var getOrders = function getOrders() {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/admin/order-processing').then(function (res) {
+      setOrders(res.data.data);
+    })["catch"](function (e) {
+      return console.log(e.res);
+    });
+  };
+
+  var getThemes = function getThemes() {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/admin/themes-for-select').then(function (res) {
+      setThemes(res.data.data);
+    })["catch"](function (e) {
+      return console.log(e.res);
+    });
+  };
+
+  var getPicture = function getPicture() {
+    axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/admin/picture-for-edit/".concat(pictureid)).then(function (res) {
+      setUrl(res.data.data.url);
+      setDescription(res.data.data.description);
+      setSelectedTheme(res.data.data.theme);
+      setSelectedOrder(res.data.data.order);
+    })["catch"](function (error) {
+      return console.log(error.res);
+    });
+  };
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    getOrders();
+    getThemes();
+    getPicture();
+  }, []);
+
+  var update = function update(e) {
+    e.preventDefault();
+    var data = {
+      description: description.trim(),
+      theme_id: selectedTheme.id,
+      order_id: selectedOrder.id
+    };
+    axios__WEBPACK_IMPORTED_MODULE_2___default().patch("/admin/picture/".concat(pictureid), data).then(function (res) {
+      if (res.status == 200) {}
+    })["catch"](function (error) {
+      return console.log(error.res);
+    });
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+        src: url,
+        alt: description,
+        style: {
+          width: "150px",
+          marginBottom: "5px"
+        }
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+      onSubmit: update,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "form-group",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
+          name: "description",
+          className: "form-control mb-3",
+          rows: "4",
+          value: description,
+          onChange: function onChange(e) {
+            return setDescription(e.target.value);
+          }
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "form-group  mt-3 mb-5",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+          htmlFor: "select_theme",
+          className: "form-label",
+          children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0442\u0435\u043C\u0443"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          name: "theme_id",
+          id: "select_theme",
+          className: "mb-5",
+          isSearchable: true,
+          isClearable: true,
+          defaultValue: selectedTheme,
+          value: selectedTheme,
+          onChange: setSelectedTheme,
+          getOptionLabel: function getOptionLabel(option) {
+            return option.title;
+          },
+          getOptionValue: function getOptionValue(option) {
+            return option.id;
+          },
+          options: themes
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        className: "form-group  mt-3 mb-5",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+          htmlFor: "select_order",
+          className: "form-label",
+          children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0437\u0430\u044F\u0432\u043A\u0443"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__["default"], {
+          name: "order_id",
+          id: "select_order",
+          className: "mb-5",
+          isSearchable: true,
+          isClearable: true,
+          defaultValue: selectedOrder,
+          value: selectedOrder,
+          onChange: setSelectedOrder,
+          getOptionLabel: function getOptionLabel(option) {
+            return ["".concat(option.location, " | "), "".concat(option.customer_name, " | "), " ".concat(option.description)];
+          },
+          getOptionValue: function getOptionValue(option) {
+            return option.id;
+          },
+          options: orders
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        className: "d-block",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+          type: "submit",
+          className: "btn btn-primary btn-lg btn-block mt-1 w-100",
+          children: "Submit"
+        })
+      })]
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PictureEditForm);
+
+if (document.getElementById('pictureEditForm')) {
+  var element = document.getElementById('pictureEditForm');
+  var props = Object.assign({}, element.dataset);
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(PictureEditForm, _objectSpread({}, props)), element);
+}
 
 /***/ }),
 
