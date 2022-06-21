@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\Contact\StoreRequest;
 
 class ContactPageController extends BaseController
@@ -21,6 +22,7 @@ class ContactPageController extends BaseController
     $res = $this->service->store($data);    
 
     if ($res) {
+      Alert::success('Ваша заявка успешно отправлена.', 'Скоро я свяжусь с вами.');   
       return redirect()->route('contact.index')->withStatus('Ваша заявка успешно отправлена. Скоро я свяжусь с вами.');
     }
   }    

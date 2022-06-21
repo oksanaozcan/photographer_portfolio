@@ -26,6 +26,8 @@
       <main class="main">
         @yield('content')
       </main>
+
+      @include('sweetalert::alert')
       
       <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
       <!-- jQuery -->

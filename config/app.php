@@ -195,6 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        RealRashid\SweetAlert\SweetAlertServiceProvider::class,
 
     ],
 
@@ -211,6 +212,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
       'Captcha' => Mews\Captcha\Facades\Captcha::class,
+      'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     ])->toArray(),
 
 ];

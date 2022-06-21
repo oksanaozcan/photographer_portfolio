@@ -20,7 +20,7 @@
             </div>
           @endif
           <h3>Или оставьте заявку: </h3>   
-          @include('includes.add_order_form')
+          @include('includes.add_order_form')         
         </div>
         <div class="col-12 col-sm-3 align-self-end mb-3 d-flex justify-content-between">
           <a class="smm-icon" href="#">
@@ -38,5 +38,5 @@
         </div>
       </div>
     </section>      
-  </div>    
+  </div>     
 @endsection
