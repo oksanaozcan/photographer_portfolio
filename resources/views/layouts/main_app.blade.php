@@ -40,6 +40,7 @@
       <script src={{ asset("plugins/bootstrap/js/bootstrap.bundle.min.js") }}></script>
       <!-- Select2 -->
       <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       {{-- <script>
         $(document).ready(function() {
           $('.js-multiple-tags').select2();
@@ -50,5 +51,18 @@
       <script>
         AOS.init();
       </script>
+
+      <script type="text/javascript">
+        $('#reload').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: 'contacts/reload-captcha',
+                success: function (data) {
+                    $(".captcha span").html(data.captcha);
+                }
+            });
+        });
+      </script>
+
     </body>
 </html>

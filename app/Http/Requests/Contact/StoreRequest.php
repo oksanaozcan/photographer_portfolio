@@ -30,7 +30,8 @@ class StoreRequest extends FormRequest
         'location' => 'required|string|max:255',
         'description' => 'required|string|max:2000',
         'convenient_date' => 'required|date',
-        'convenient_time' => 'nullable',        
+        'convenient_time' => 'nullable',
+        'captcha' => 'required|captcha',
       ];
     }
 }

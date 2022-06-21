@@ -50,6 +50,22 @@
     @error('convenient_time')
       <small class="form-text text-danger">{{ $message }}</small>                  
     @enderror               
-  </div>              
+  </div>         
+  
+  <div class="form-group mt-4 mb-4">
+    <div class="captcha">
+        <span>{!! captcha_img() !!}</span>
+        <button type="button" class="btn btn-danger" class="reload" id="reload">
+            &#x21bb;
+        </button>
+    </div>
+</div>
+<div class="form-group mb-4">
+    <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" name="captcha">
+    @error('captcha')
+      <small class="form-text text-danger">{{ $message }}</small>                  
+    @enderror         
+</div>
+
   <button type="submit" class="phone-btn">Отправить</button>
 </form>

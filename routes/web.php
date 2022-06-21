@@ -16,6 +16,7 @@ Route::get('/themes', [ThemePageController::class, 'index'])->name('theme.index'
 Route::prefix('contacts')->group(function () {
   Route::get('/', [ContactPageController::class, 'index'])->name('contact.index');
   Route::post('/', [ContactPageController::class, 'store'])->name('contact.store');
+  Route::get('/reload-captcha', [ContactPageController::class, 'reloadCaptcha'])->name('contact.reload.captcha');
 });
 
 // Route::get('/test', function () {
