@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
       View::composer([
         'main', 
         'includes.themesbar',
-        'theme.*', 
+        'gallery.*', 
         'admin.*'], function ($view) {
         $themes = Cache::rememberForever('themes', function () {
           return Theme::all();         
