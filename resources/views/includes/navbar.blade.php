@@ -15,7 +15,7 @@
               <a class="{{  request()->routeIs('main') ? 'nav-link active' : 'nav-link' }}" href="{{ route('main') }}">Обо мне</a>
             </li>             
             <li class="nav-item">
-              <a class="{{  request()->routeIs('theme.*') ? 'nav-link active' : 'nav-link' }}" href="{{ route('theme.index') }}">Темы съемки</a>
+              <a class="{{  request()->routeIs('theme.*') ? 'nav-link active' : 'nav-link' }}" href="{{ route('theme.index') }}">Галерея</a>
             </li>      
             <li class="nav-item">
               <a class="{{  request()->routeIs('contact.*') ? 'nav-link active' : 'nav-link' }}" href="{{ route('contact.index') }}">Контакты</a>

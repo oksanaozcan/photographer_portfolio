@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Theme;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+      Paginator::useBootstrapFive();
+
       View::composer([
         'main', 
         'includes.themesbar',

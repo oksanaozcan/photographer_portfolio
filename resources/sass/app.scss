@@ -312,3 +312,25 @@ color: $cyan;
     transition: 0.5s;
   }
 }
+
+.pagination > li > a {
+  background-color: transparent;
+  color: white;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+  color: white;
+  background-color: $cyan-700;
+  border-color: $cyan-700;
+}
+
+.pagination .page-item.active .page-link 
+{
+  color: white;
+  background-color: $cyan-700 !Important;
+  border: solid 1px $cyan-700 !Important;
+}

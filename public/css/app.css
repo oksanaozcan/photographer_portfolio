@@ -10599,3 +10599,23 @@ a {
   opacity: 0;
   transition: 0.5s;
 }
+
+.pagination > li > a {
+  background-color: transparent;
+  color: white;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover {
+  color: white;
+  background-color: #087990;
+  border-color: #087990;
+}
+
+.pagination .page-item.active .page-link {
+  color: white;
+  background-color: #087990 !important;
+  border: solid 1px #087990 !important;
+}

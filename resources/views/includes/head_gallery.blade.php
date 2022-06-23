@@ -11,7 +11,7 @@
         <img style="width: 100%;height:100%" class="" src="{{ url($randomPicture->url) }}" alt="{{ $randomPicture->description }}"/>        
       </div>
       <div class="img-content__box">
-        <a href="#"><h6>Смотреть {{ $randomPicture->theme->title }}</h6></a>
+        <a href="#"><h6>{{ $randomPicture->theme->title }}</h6></a>
         <p>{{ $randomPicture->description }}</p>
         <a type="button" class="btn btn-primary" href="#">Другие фото</a>
       </div>      
