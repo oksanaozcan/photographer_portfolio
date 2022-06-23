@@ -23,6 +23,10 @@
       </a>
     </div>
 
+    <div style="margin-top: 6rem;">      
+      @include('includes.themesbar')
+    </div>   
+
   </div> 
 
   <div data-aos="zoom-in-up" class="presentation__photo">

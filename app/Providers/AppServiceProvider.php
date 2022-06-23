@@ -26,10 +26,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      View::composer(['main', 'theme.*', 'admin.*'], function ($view) {
+      View::composer([
+        'main', 
+        'includes.themesbar',
+        'theme.*', 
+        'admin.*'], function ($view) {
         $themes = Cache::rememberForever('themes', function () {
-          return Theme::all();
-          // return Theme::withCount('cultures')->get();
+          return Theme::all();         
         });        
         $view->with('themes', $themes);
       }); 
