@@ -9,7 +9,6 @@ use App\Http\Resources\Admin\PictureResource;
 use Illuminate\Http\Request;
 use App\Models\Picture;
 use Barryvdh\Debugbar\Facades\Debugbar;
-use Barryvdh\Debugbar\Twig\Extension\Debug;
 use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
@@ -31,9 +30,7 @@ class PictureController extends Controller
     $pictures = $data['pictures'];
 
     foreach ($pictures as $picture) {
-      $filePath = Storage::disk('public')->put('images', $picture); 
-
-      Debugbar::debug($filePath);
+      $filePath = Storage::disk('public')->put('images', $picture);       
 
       Picture::create([
         'path' => $filePath,        

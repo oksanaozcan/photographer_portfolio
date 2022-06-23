@@ -11,7 +11,7 @@
           <h1 class="m-0">Фотографии</h1>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
-          <a href={{ route('admin.customer.create') }} type="button" class="btn btn-primary">Добавить</a>
+          <a href={{ route('admin.picture.create') }} type="button" class="btn btn-primary">Добавить</a>
         </div>
       </div>
     </div>
