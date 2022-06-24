@@ -7,7 +7,7 @@
         data-aos-easing="ease-in-sine"
         class="nav-item theme-link"
       >
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{{ route('theme.index', $theme->id) }}">
           {{ $theme->title }}
         </a>
       </li>                   

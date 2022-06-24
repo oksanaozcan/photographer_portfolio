@@ -8,11 +8,13 @@ use App\Http\Controllers\Admin\ThemeController;
 use App\Http\Controllers\ContactPageController;
 use App\Http\Controllers\MainPageController;
 use App\Http\Controllers\GalleryPageController;
+use App\Http\Controllers\ThemePageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [MainPageController::class, 'index'])->name('main');
 Route::get('/gallery', [GalleryPageController::class, 'index'])->name('gallery.index');
+Route::get('/theme/{theme}', [ThemePageController::class, 'index'])->name('theme.index');
 Route::prefix('contacts')->group(function () {
   Route::get('/', [ContactPageController::class, 'index'])->name('contact.index');
   Route::post('/', [ContactPageController::class, 'store'])->name('contact.store');
