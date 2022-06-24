@@ -31,6 +31,7 @@
                 <th scope="col">Почта</th>
                 <th scope="col">Кол-во заявок</th>               
                 <th scope="col">Кол-во фото</th>
+                <th scope="col">Нет активных заявок</th>
                 <th scope="col">Действия</th>
               </tr>
             </thead>
@@ -43,6 +44,7 @@
                   <td>{{ $item->email }}</td>
                   <td>{{ $item->orders->count() }}</td>
                   <td>{{ $item->pictures->count() }}</td>
+                  <td>{{ $item->orderable ? 'да' : 'нет' }}</td>
                   <td class="d-flex">
                     <a href={{ route('admin.customer.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
                     <a href={{ route('admin.customer.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>

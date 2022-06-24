@@ -27,7 +27,7 @@ class OrderController extends BaseController
 
   public function createSingleOrder()
   {
-    $customers = Customer::all(['id', 'name', 'phone']);
+    $customers = Customer::where('orderable', true)->get(['id', 'name', 'phone']);
     return view('admin.order.create-single-order', compact('customers'));
   }
 
@@ -44,7 +44,7 @@ class OrderController extends BaseController
   public function storeSingleOrder(StoreSingleOrderRequest $request)
   {
     $data = $request->validated();
-    Order::firstOrCreate($data);
+    Order::firstOrCreate($data);   
     return redirect()->route('admin.order.index');    
   }
 

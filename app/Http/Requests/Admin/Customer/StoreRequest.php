@@ -27,6 +27,7 @@ class StoreRequest extends FormRequest
         'name' => 'required|unique:customers|string|max:255',        
         'phone' => 'required|unique:customers|string|max:255',
         'email' => 'required|email|max:255',
+        'orderable' =>'nullable'
       ];
     }
 }
