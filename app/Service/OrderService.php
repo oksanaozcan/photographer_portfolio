@@ -7,9 +7,43 @@ use App\Models\Order;
 use Exception;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class OrderService
 {
+  public function storeWithExistedCustomer($data, $existedCustomer)
+  {
+    try {
+      DB::beginTransaction();
+
+      $existedCustomer->update([
+        'orderable' => false,
+        'email' => $data['email']
+      ]); 
+      
+      if (isset($data['name'])) {
+        unset($data['name']);
+      }      
+      if (isset($data['phone'])) {
+        unset($data['phone']);
+      }   
+      if (isset($data['email'])) {
+        unset($data['email']);
+      }
+
+      $data = Arr::add($data, 'customer_id', $existedCustomer->id);      
+      Order::firstOrCreate($data);               
+
+      DB::commit();
+
+      return true;
+
+    } catch (Exception $exception) {
+      DB::rollBack();
+      abort(500, $exception);
+    }
+  }
+
   public function store($data)
   {
     try {
