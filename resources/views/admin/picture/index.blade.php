@@ -42,8 +42,8 @@
                   </td>
                   <td>{{ $item->url }}</td>
                   <td>{{ $item->size }}</td>
-                  <td>{{ $item->theme->title }}</td>
-                  <td>{{ $item->customer->name }}</td>
+                  <td>{{ $item->theme !== null ? $item->theme->title : 'deleted' }}</td>
+                  <td>{{ $item->customer !== null ? $item->customer->name : 'deleted' }}</td>
                   <td>{{ $item->created_at }}</td>
                   <td class="d-flex">
                     <a href={{ route('admin.picture.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>

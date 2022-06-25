@@ -37,10 +37,13 @@ class OrderObserver
   
   public function deleted(Order $order)
   {
-    Customer::find($order->customer->id)
+    if ($order->customer !== null) {
+      Customer::find($order->customer->id)
       ->update([
         'orderable' => true,
-      ]);    
+      ]);
+    }
+        
   }
   
   public function restored(Order $order)

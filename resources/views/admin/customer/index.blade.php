@@ -51,7 +51,11 @@
                     <form action="{{ route('admin.customer.delete', $item->id) }}" method="POST">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="btn btn-danger">Удалить</button>
+                      <button type="submit" 
+                        class="btn btn-danger"
+                        @disabled($item->orders->isNotEmpty())
+                      >
+                        Удалить</button>
                     </form>                    
                   </td>
                 </tr>                         

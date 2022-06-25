@@ -38,7 +38,7 @@
               @foreach ($orders as $item)
                 <tr>
                   <th>{{ $item->id }}</th>
-                  <td>{{ $item->customer->name }}</td>                                  
+                  <td>{{ $item->customer !== null ? $item->customer->name : 'удален' }}</td>                                  
                   <td>{{ $item->location }}</td>                                  
                   <td>{{ $item->convenient_date }}</td>
                   <td>{{ $item->status }}</td>                         
