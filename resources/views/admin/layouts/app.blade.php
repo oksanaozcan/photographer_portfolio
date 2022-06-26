@@ -91,6 +91,7 @@
   @include('admin.includes.sidebar')
 
   @yield('content')
+  @include('sweetalert::alert')
  
   {{-- <footer class="main-footer">
     <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>

@@ -94,4 +94,3 @@ Route::get('/home', function () {
 Route::get('/register', function () {
   return redirect('/');
 });
-

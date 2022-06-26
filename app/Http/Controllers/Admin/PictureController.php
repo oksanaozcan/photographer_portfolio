@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Picture\StoreRequest;
 use App\Http\Requests\Admin\Picture\UpdateRequest;
 use App\Http\Resources\Admin\PictureResource;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\Picture;
+use App\Notifications\SendPicturesUploadedNotification;
 use Barryvdh\Debugbar\Facades\Debugbar;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class PictureController extends Controller
@@ -30,8 +33,8 @@ class PictureController extends Controller
     $pictures = $data['pictures'];
 
     foreach ($pictures as $picture) {
-      $filePath = Storage::disk('public')->put('images', $picture);       
-
+      $filePath = Storage::disk('public')->put('images', $picture);      
+      
       Picture::create([
         'path' => $filePath,        
         'url' => url('/storage/' . $filePath),        
@@ -41,6 +44,19 @@ class PictureController extends Controller
         'order_id' => $data['order_id'],
       ]);
     }
+
+    $order = Order::find($data['order_id']);
+    $customer = $order->customer;
+    
+    $notifyData = [
+      'body' => $customer->name,
+      'text' => 'Pictures from your order ' . $order->description . ' uploaded.',
+      'url' => url('/order/' . $order->id),
+      'msg' => 'Thank you!',
+    ];
+
+    $customer->notify(new SendPicturesUploadedNotification($notifyData));
+
     return response()->json(["message" => "success"]);
   }
 
