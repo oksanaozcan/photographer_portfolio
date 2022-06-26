@@ -32,11 +32,11 @@ class OrderService
       }
 
       $data = Arr::add($data, 'customer_id', $existedCustomer->id);      
-      Order::firstOrCreate($data);               
+      $order = Order::firstOrCreate($data);               
 
       DB::commit();
 
-      return true;
+      return $order;
 
     } catch (Exception $exception) {
       DB::rollBack();
@@ -68,11 +68,11 @@ class OrderService
       $customer = Customer::firstOrCreate($customerData); 
       
       $data = Arr::add($data, 'customer_id', $customer->id);      
-      Order::firstOrCreate($data);         
+      $order = Order::firstOrCreate($data);         
 
       DB::commit();
 
-      return true;
+      return $order;
 
     } catch (Exception $exception) {
       DB::rollBack();

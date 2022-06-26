@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Models\Customer;
 use App\Models\Order;
+use App\Models\User;
+use App\Notifications\ArrivedNewOrderNotification;
 use Illuminate\Support\Facades\Log;
 
 class OrderObserver
@@ -22,7 +24,7 @@ class OrderObserver
       $customer->update([
         'orderable' => true,
       ]);
-    }
+    }    
   }
 
   public function updated(Order $order)

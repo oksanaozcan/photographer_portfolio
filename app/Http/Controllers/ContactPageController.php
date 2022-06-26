@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreated;
 use RealRashid\SweetAlert\Facades\Alert;
-use App\Http\Requests\Contact\StoreRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -71,7 +71,10 @@ class ContactPageController extends BaseController
     }      
     
     if ($res) {
-      Alert::success('Ваша заявка успешно отправлена.', 'Скоро я свяжусь с вами.');   
+      Alert::success('Ваша заявка успешно отправлена.', 'Скоро я свяжусь с вами.');  
+      
+      event(new OrderCreated($res));
+
       return redirect()->route('contact.index')->withStatus('Ваша заявка успешно отправлена. Скоро я свяжусь с вами.');
     }
   }    
