@@ -18,7 +18,7 @@
                 class="col-6 col-md-4 mt-2 mb-2"
               >              
                 <a href="{{ url($picture->url) }}" data-toggle="lightbox" data-caption="{{ $picture->description }}">
-                  <img style="width: 100%;height:100%" src="{{ url($picture->url) }}" alt="{{ $picture->description }}"/>    
+                  <img style="width: 100%;height:100%;object-fit:cover;" src="{{ url($picture->url) }}" alt="{{ $picture->description }}"/>    
                 </a> 
               </div>           
             @endif
@@ -31,7 +31,7 @@
                 class="col-6 col-md-4 mt-2 mb-2"
               >
                 <a href="{{ url($picture->url) }}" data-toggle="lightbox" data-caption="{{ $picture->description }}">
-                  <img style="width: 100%;height:100%" src="{{ url($picture->url) }}" alt="{{ $picture->description }}"/>    
+                  <img style="width: 100%;height:100%;object-fit:cover;" src="{{ url($picture->url) }}" alt="{{ $picture->description }}"/>    
                 </a>        
               </div>           
             @endif
