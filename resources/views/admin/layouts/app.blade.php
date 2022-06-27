@@ -51,7 +51,7 @@
         <a href="{{ route('main') }}" class="nav-link">Обо мне</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Контакты</a>
+        <a href="{{ route('contact.index') }}" class="nav-link">Контакты</a>
       </li>
     </ul>
 

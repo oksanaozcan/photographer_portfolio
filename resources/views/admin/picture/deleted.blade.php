@@ -39,7 +39,7 @@
                   <td>
                     <img style="width:100px;" src="{{ url($item->url) }}"/>                    
                   </td>
-                  <td>{{ $item->theme->title }}</td>
+                  <td>{{ $item->theme !== null ? $item->theme->title : 'deleted' }}</td>
                   <td>{{ $item->customer->name }}</td>
                   <td>{{ $item->created_at }}</td>                
                   <td>{{ $item->deleted_at }}</td>
