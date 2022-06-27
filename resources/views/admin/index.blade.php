@@ -24,14 +24,14 @@
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>data</h3>
+              <h3>Клиенты</h3>
 
-              <p>Товары (культуры)</p>
+              <p>Всего: {{ $countCustomer }} </p>
             </div>
             <div class="icon">
-              <i class="ion ion-bag"></i>
+              <i class="ion ion-person"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('admin.customer.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -39,13 +39,13 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>data</h3>
-              <p>Виды (удобрения)</p>
+              <h3>Заявки</h3>
+              <p>Всего {{ $countOrder }}</p>                        
             </div>
             <div class="icon">
-              <i class="ion ion-stats-bars"></i>
+              <i class="far fa-envelope"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('admin.order.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -53,13 +53,13 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>data</h3>
-              <p>Клиенты</p>
+              <h3>Фотографии</h3>
+              <p>Всего {{ $countPicture }}</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="ion ion-image"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('admin.picture.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -67,17 +67,17 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>#</h3>
-              <p>Пользователи</p>
+              <h3>Темы</h3>
+              <p>Всего: {{ $countTheme }} </p>
             </div>
             <div class="icon">
               <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('admin.theme.index') }}" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
-        <div class="col-lg-3 col-6">
+        {{-- <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-primary">
             <div class="inner">
@@ -89,9 +89,9 @@
             </div>
             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-        </div>
+        </div> --}}
 
-        <div class="col-lg-3 col-6">
+        {{-- <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-dark">
             <div class="inner">
@@ -103,7 +103,7 @@
             </div>
             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-        </div>
+        </div> --}}
         <!-- ./col -->
       </div>
       <!-- /.row -->
