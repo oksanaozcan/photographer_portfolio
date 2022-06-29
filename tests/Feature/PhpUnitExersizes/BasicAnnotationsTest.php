@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ExersizeTest extends TestCase
+class BasicAnnotationsTest extends TestCase
 {
   public static $value = 0;
 
@@ -47,11 +47,7 @@ class ExersizeTest extends TestCase
   {
     $res = $a * $b;
     $this->assertEquals($exepted, $res);
-  }
-
-   
-
-  
+  }  
 
   public function emails_prodiver()
   {
