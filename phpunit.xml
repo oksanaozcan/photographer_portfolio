@@ -2,7 +2,9 @@
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
          bootstrap="vendor/autoload.php"
+         verbose="true"
          colors="true"
+         testdox="true"
 >
     <testsuites>
         <testsuite name="Unit">
@@ -10,6 +12,9 @@
         </testsuite>
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
+        </testsuite>
+        <testsuite name="EET">
+          <directory>./tests/Feature/PhpUnitExersizes/ErrorsExceptionsTest.php</directory>
         </testsuite>
     </testsuites>
     <coverage processUncoveredFiles="true">

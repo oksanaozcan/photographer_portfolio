@@ -18,6 +18,7 @@ class RoutesTest extends TestCase
     $response->assertSee('Профессиональный фотограф');
     $response->assertViewIs('index');
     $response->assertStatus(200);
+    $this->assertEquals(config('app.name'), 'Alekseev Studio');
   }
 
   public function test_contact_route_assert()
