@@ -15,40 +15,20 @@
     <div class="container-fluid">          
       <div class="row">
         <div class="col-sm-12">
-          <table class="table sortable">
-            <thead>
+          <x-table :headers="['#','Тема','Клиент','Дата загрузки','Дата удаления','Действия']">
+            @foreach ($trashedPictures as $item)
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">Тема</th>
-                <th scope="col">Клиент</th>
-                <th scope="col">Дата загрузки</th>
-                <th scope="col">Дата удаления</th>
-                <th scope="col">Действия</th>
-              </tr>
-            </thead>
-            <tbody>
-              @foreach ($trashedPictures as $item)
-                <tr>
-                  <td>
-                    <img style="width:100px;" src="{{ url($item->url) }}"/>                    
-                  </td>
-                  <td>{{ $item->theme !== null ? $item->theme->title : 'deleted' }}</td>
-                  <td>{{ $item->customer->name }}</td>
-                  <td>{{ $item->created_at }}</td>                
-                  <td>{{ $item->deleted_at }}</td>
-                  <td class="d-flex">
-                    {{-- <a href={{ route('admin.fertilizers.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
-                    <a href={{ route('admin.fertilizers.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>
-                    <form action="{{ route('admin.fertilizers.delete', $item->id) }}" method="POST">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="btn btn-danger">Удалить</button>
-                    </form>                     --}}
-                  </td>
-                </tr>                         
-              @endforeach                   
-            </tbody>
-          </table>
+                <td>
+                  <img style="width:100px;" src="{{ url($item->url) }}"/>                    
+                </td>
+                <td>{{ $item->theme !== null ? $item->theme->title : 'deleted' }}</td>
+                <td>{{ $item->customer->name }}</td>
+                <td>{{ $item->created_at }}</td>                
+                <td>{{ $item->deleted_at }}</td>
+                <td class="d-flex"></td>
+              </tr>                         
+            @endforeach        
+          </x-table>          
         </div>
       </div>     
     </div>   
