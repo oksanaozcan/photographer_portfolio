@@ -5,15 +5,8 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">Форма для редактирования {{ $theme->title }}</h1>
-        </div>
-        <div class="col-sm-6 d-flex flex-row-reverse">
-          <a href={{ route('admin.theme.index') }} type="button" class="btn btn-outline-secondary">Назад к списку</a>
-        </div>
-      </div>
+    <div class="container-fluid">     
+      <x-content-header title="Форма для редактирования" path="admin.theme.index" routeTitle="Назад к списку" btnClasses="btn btn-outline-secondary" /> 
       <div class="row mb-2">
         <div class="col-sm-6 mt-2">
           <form action={{ route('admin.theme.update', $theme->id) }} method="POST">

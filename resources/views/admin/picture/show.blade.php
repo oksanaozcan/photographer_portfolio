@@ -6,14 +6,7 @@
   <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">Фото</h1>
-        </div>
-        <div class="col-sm-6 d-flex flex-row-reverse">
-          <a href={{ route('admin.picture.index') }} type="button" class="btn btn-outline-secondary">Назад к списку</a>
-        </div>
-      </div>
+      <x-content-header title="Подробные сведения" path="admin.picture.index" routeTitle="Назад к списку" btnClasses="btn btn-outline-secondary" /> 
       <div class="row mb-2">
         <div class="col-sm-6 mt-2">
           <div class="card" style="width: 36rem;">

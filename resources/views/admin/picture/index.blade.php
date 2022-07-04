@@ -3,19 +3,8 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">Фотографии</h1>
-        </div>
-        <div class="col-sm-6 d-flex flex-row-reverse">
-          <a href={{ route('admin.picture.create') }} type="button" class="btn btn-primary">Добавить</a>
-        </div>
-      </div>
-    </div>
-  </div>  
+  <!-- Content Header (Page header) -->  
+  <x-content-header title="Фотографии" path="admin.picture.create"/> 
 
   <!-- Main content -->
   <section class="content">

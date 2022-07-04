@@ -39,6 +39,6 @@ class AppServiceProvider extends ServiceProvider
           return Theme::all();         
         });        
         $view->with('themes', $themes);
-      }); 
+      });       
     }
 }

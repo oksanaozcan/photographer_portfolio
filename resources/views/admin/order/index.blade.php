@@ -3,20 +3,15 @@
 
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <div class="content-header">
-    <div class="container-fluid">
-      <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="m-0">Заявки</h1>
-        </div>
-        <div class="col-sm-6 d-flex flex-row-reverse">
-          <a href={{ route('admin.order.create') }} type="button" class="btn btn-primary">Добавить заявку и клиента</a>
-          <a href={{ route('admin.order.create-single-order') }} type="button" class="btn btn-primary mr-3">Добавить только заявку</a>
-        </div>        
-      </div>
-    </div>
-  </div>  
+  <!-- Content Header (Page header) -->  
+  <x-content-header title="Заявки" path="admin.order.create" routeTitle="Добавить заявку и клиента" /> 
+  <div class="row mr-2 mb-2">
+    <div class="col-sm-6"></div>
+    <div class="col-sm-6 d-flex flex-row-reverse">
+      <a href={{ route('admin.order.create-single-order') }} type="button" class="btn btn-primary">Добавить только заявку</a>
+    </div>    
+  </div>
+  
 
   <!-- Main content -->
   <section class="content">
