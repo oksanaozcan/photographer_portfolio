@@ -22,14 +22,7 @@
             </ul>         
             <div class="card-body d-flex">
               <x-ui.edit-btn path='admin.customer.edit' :id="$customer->id" >Изменить</x-ui.show-btn>      
-              <form action="{{ route('admin.customer.delete', $customer->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit"
-                  class="text-danger card-link border-0 bg-transparent"
-                  @disabled($customer->orders->isNotEmpty())                  
-                >Удалить</button>
-              </form>        
+              <x-ui.delete-btn path='admin.customer.delete' :id="$customer->id" :disabled="$customer->orders->isNotEmpty()"/>                   
             </div>
           </div>          
         </div>

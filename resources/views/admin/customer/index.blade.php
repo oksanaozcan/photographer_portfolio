@@ -25,16 +25,8 @@
               <td>{{ $item->orderable ? 'да' : 'нет' }}</td>
               <td class="d-flex">
                 <x-ui.show-btn path='admin.customer.show' :id="$item->id" >Смотреть</x-ui.show-btn>               
-                <x-ui.edit-btn path='admin.customer.edit' :id="$item->id" >Изменить</x-ui.show-btn>                          
-                <form action="{{ route('admin.customer.delete', $item->id) }}" method="POST">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" 
-                    class="btn btn-danger"
-                    @disabled($item->orders->isNotEmpty())
-                  >
-                    Удалить</button>
-                </form>                    
+                <x-ui.edit-btn path='admin.customer.edit' :id="$item->id" >Изменить</x-ui.show-btn>                  
+                <x-ui.delete-btn path='admin.customer.delete' :id="$item->id" :disabled="$item->orders->isNotEmpty()"/>              
               </td>
             </tr>                         
           @endforeach                
