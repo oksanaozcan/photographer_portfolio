@@ -21,12 +21,8 @@
                 <td>{{ $item->pictures->count() }}</td>
                 <td class="d-flex">
                   <x-ui.show-btn path='admin.theme.show' :id="$item->id" >Смотреть</x-ui.show-btn>               
-                  <x-ui.edit-btn path='admin.theme.edit' :id="$item->id" >Изменить</x-ui.show-btn>                     
-                  <form action="{{ route('admin.theme.delete', $item->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Удалить</button>
-                  </form>                    
+                  <x-ui.edit-btn path='admin.theme.edit' :id="$item->id" >Изменить</x-ui.show-btn>                   
+                  <x-ui.delete-btn path='admin.theme.delete' :id="$item->id" />                  
                 </td>
               </tr>                         
             @endforeach               

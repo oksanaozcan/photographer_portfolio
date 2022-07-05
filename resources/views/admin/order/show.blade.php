@@ -25,12 +25,8 @@
               <li class="list-group-item">Статус заявки: {{ $order->status }}</li>              
             </ul>
             <div class="card-body d-flex">
-              <x-ui.edit-btn path='admin.order.edit' :id="$order->id" >Изменить</x-ui.show-btn>               
-              <form action="{{ route('admin.order.delete', $order->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-danger card-link border-0 bg-transparent">Удалить</button>
-              </form>        
+              <x-ui.edit-btn path='admin.order.edit' :id="$order->id" >Изменить</x-ui.show-btn>         
+              <x-ui.delete-btn path='admin.order.delete' :id="$order->id" />               
             </div>
           </div>          
         </div>

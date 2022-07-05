@@ -21,11 +21,7 @@
             </ul>
             <div class="card-body d-flex">
               <x-ui.edit-btn path='admin.theme.edit' :id="$theme->id" >Изменить</x-ui.show-btn>           
-              <form action="{{ route('admin.theme.delete', $theme->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-danger card-link border-0 bg-transparent">Удалить</button>
-              </form>        
+              <x-ui.delete-btn path='admin.theme.delete' :id="$theme->id" />     
             </div>
           </div>          
         </div>

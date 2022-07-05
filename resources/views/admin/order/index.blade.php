@@ -37,12 +37,7 @@
                       <a class="dropdown-item" href={{ route('admin.order.edit-single-order', $item->id) }}>Данные заявки</a>
                     </div>
                   </div>
-
-                  <form action="{{ route('admin.order.delete', $item->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Удалить</button>
-                  </form>                    
+                  <x-ui.delete-btn path='admin.order.delete' :id="$item->id" />                                  
                 </td>
               </tr>                         
             @endforeach                   

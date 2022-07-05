@@ -12,7 +12,7 @@
           <div class="card" style="width: 36rem;">
             <div class="card-body">
               <img class="card-img-top" src="{{ url($picture->url) }}" alt="Card image cap">
-              <h5 class="card-title">Тема {{ $picture->theme->title }}</h5>
+              <h5 class="card-title">Тема {{ $picture->theme !== null ? $picture->theme->title : 'удалена'}}</h5>
               <p class="card-text"> Клиент {{ $picture->customer->name }}</p>
               <p class="card-text">
                 <a href={{ route('admin.order.show', $picture->order->id) }} class="card-link mr-2">Смотреть подробности заявки</a>
@@ -25,12 +25,8 @@
               <li class="list-group-item">{{ $picture->updated_at }}</li>                                 
             </ul>         
             <div class="card-body d-flex">
-              <a href={{ route('admin.picture.edit', $picture->id) }} class="card-link mr-2">Изменить</a>
-              <form action="{{ route('admin.picture.delete', $picture->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="text-danger card-link border-0 bg-transparent">Удалить</button>
-              </form>        
+              <x-ui.edit-btn path='admin.picture.edit' :id="$picture->id" >Изменить</x-ui.show-btn>                   
+              <x-ui.delete-btn path='admin.picture.delete' :id="$picture->id" />     
             </div>
           </div>          
         </div>

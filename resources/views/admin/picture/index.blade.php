@@ -24,12 +24,8 @@
                 <td>{{ $item->created_at }}</td>
                 <td class="d-flex">
                   <x-ui.show-btn path='admin.picture.show' :id="$item->id" >Смотреть</x-ui.show-btn>               
-                  <x-ui.edit-btn path='admin.picture.edit' :id="$item->id" >Изменить</x-ui.show-btn>                              
-                  <form action="{{ route('admin.picture.delete', $item->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Удалить</button>
-                  </form>                    
+                  <x-ui.edit-btn path='admin.picture.edit' :id="$item->id" >Изменить</x-ui.show-btn>                     
+                  <x-ui.delete-btn path='admin.picture.delete' :id="$item->id" />                                            
                 </td>
               </tr>                         
             @endforeach        
