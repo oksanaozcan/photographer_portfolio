@@ -21,7 +21,7 @@
               <li class="list-group-item">{{ $customer->updated_at }}</li>                                 
             </ul>         
             <div class="card-body d-flex">
-              <a href={{ route('admin.customer.edit', $customer->id) }} class="card-link mr-2">Изменить</a>
+              <x-ui.edit-btn path='admin.customer.edit' :id="$customer->id" >Изменить</x-ui.show-btn>      
               <form action="{{ route('admin.customer.delete', $customer->id) }}" method="POST">
                 @csrf
                 @method('DELETE')

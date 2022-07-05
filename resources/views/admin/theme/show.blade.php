@@ -20,7 +20,7 @@
               <li class="list-group-item">{{ $theme->updated_at }}</li>              
             </ul>
             <div class="card-body d-flex">
-              <a href={{ route('admin.theme.edit', $theme->id) }} class="card-link mr-2">Изменить</a>
+              <x-ui.edit-btn path='admin.theme.edit' :id="$theme->id" >Изменить</x-ui.show-btn>           
               <form action="{{ route('admin.theme.delete', $theme->id) }}" method="POST">
                 @csrf
                 @method('DELETE')

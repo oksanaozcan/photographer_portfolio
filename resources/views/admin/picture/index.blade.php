@@ -23,8 +23,8 @@
                 <td>{{ $item->customer !== null ? $item->customer->name : 'deleted' }}</td>
                 <td>{{ $item->created_at }}</td>
                 <td class="d-flex">
-                  <a href={{ route('admin.picture.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
-                  <a href={{ route('admin.picture.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>
+                  <x-ui.show-btn path='admin.picture.show' :id="$item->id" >Смотреть</x-ui.show-btn>               
+                  <x-ui.edit-btn path='admin.picture.edit' :id="$item->id" >Изменить</x-ui.show-btn>                              
                   <form action="{{ route('admin.picture.delete', $item->id) }}" method="POST">
                     @csrf
                     @method('DELETE')

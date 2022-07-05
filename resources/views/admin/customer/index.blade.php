@@ -24,8 +24,8 @@
               <td>{{ $item->pictures->count() }}</td>
               <td>{{ $item->orderable ? 'да' : 'нет' }}</td>
               <td class="d-flex">
-                <a href={{ route('admin.customer.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
-                <a href={{ route('admin.customer.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>
+                <x-ui.show-btn path='admin.customer.show' :id="$item->id" >Смотреть</x-ui.show-btn>               
+                <x-ui.edit-btn path='admin.customer.edit' :id="$item->id" >Изменить</x-ui.show-btn>               
                 <form action="{{ route('admin.customer.delete', $item->id) }}" method="POST">
                   @csrf
                   @method('DELETE')

@@ -27,8 +27,7 @@
                 <td>{{ $item->convenient_date }}</td>
                 <td>{{ $item->status }}</td>                         
                 <td class="d-flex">
-                  <a href={{ route('admin.order.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>            
-
+                  <x-ui.show-btn path='admin.order.show' :id="$item->id" >Смотреть</x-ui.show-btn>   
                   <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Изменить

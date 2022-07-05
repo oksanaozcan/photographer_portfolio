@@ -20,8 +20,8 @@
                 <td>{{ $item->created_at }}</td>
                 <td>{{ $item->pictures->count() }}</td>
                 <td class="d-flex">
-                  <a href={{ route('admin.theme.show', $item->id) }} type="button" class="btn btn-info mr-1">Смотреть</a>
-                  <a href={{ route('admin.theme.edit', $item->id) }} type="button" class="btn btn-secondary mr-1">Изменить</a>
+                  <x-ui.show-btn path='admin.theme.show' :id="$item->id" >Смотреть</x-ui.show-btn>               
+                  <x-ui.edit-btn path='admin.theme.edit' :id="$item->id" >Изменить</x-ui.show-btn>                     
                   <form action="{{ route('admin.theme.delete', $item->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
